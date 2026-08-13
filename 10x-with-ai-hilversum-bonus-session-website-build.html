@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10x with AI, Hilversum · Bonus Session: Build Your Business Website Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#e90d41;
+    --red-deep:#c70a38;
+    --red-soft:#fce8ed;
+    --red-whisper:#fdf2f5;
+    --cream:#faf8f4;
+    --dark:#0f0f10;
+    --ink:#1a1a1a;
+    --ink-2:#6b6b6b;
+    --divider:#e8e2d8;
+    --font-display:'Rethink Sans',sans-serif;
+    --font-body:'Inter',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .masthead{
+    border-bottom:1px solid var(--divider);
+    padding:28px 48px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .masthead .brand{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-2);
+  }
+  .masthead .brand strong{color:var(--red);}
+  .masthead .doc-meta{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--ink-2);
+    text-align:right;
+    line-height:1.7;
+  }
+  .hero{padding:64px 48px 56px;max-width:920px;}
+  .hero .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .hero .eyebrow::before{content:"";width:20px;height:2px;background:var(--red);display:inline-block;}
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(34px,5vw,54px);
+    line-height:1.04;
+    letter-spacing:-.01em;
+    margin:0 0 20px;
+  }
+  .hero h1 .accent{color:var(--red);}
+  .hero p.lede{font-size:18px;color:var(--ink-2);max-width:660px;margin:0 0 32px;}
+  .hero-stats{display:flex;gap:0;border-top:1px solid var(--divider);flex-wrap:wrap;}
+  .hero-stats div{padding:16px 28px 0 0;margin-right:28px;border-right:1px solid var(--divider);padding-right:28px;}
+  .hero-stats div:last-child{border-right:none;margin-right:0;}
+  .hero-stats .num{font-family:var(--font-display);font-weight:800;font-size:26px;color:var(--dark);}
+  .hero-stats .label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);margin-top:4px;}
+  .layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0;max-width:1320px;margin:0 auto;}
+  .rail{position:sticky;top:0;align-self:start;height:100vh;padding:40px 20px 40px 48px;overflow-y:auto;}
+  .rail-title{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:14px;}
+  .rail a{display:flex;gap:10px;align-items:baseline;text-decoration:none;color:var(--ink);font-size:13.5px;padding:8px 0;border-left:2px solid var(--divider);padding-left:14px;margin-left:-1px;transition:border-color .15s, color .15s;}
+  .rail a .n{font-family:var(--font-mono);color:var(--ink-2);font-size:11px;}
+  .rail a:hover, .rail a.active{border-left-color:var(--red);color:var(--red-deep);}
+  .rail a.active .n{color:var(--red);}
+  .rail-note{margin-top:24px;padding-top:20px;border-top:1px solid var(--divider);font-size:12.5px;color:var(--ink-2);}
+  main{padding:40px 48px 120px 40px;}
+  .callout-block{background:var(--red-whisper);border:1px solid var(--red-soft);border-left:3px solid var(--red);border-radius:2px;padding:18px 22px;margin:28px 0;font-size:14.5px;}
+  .callout-block .tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--red-deep);display:block;margin-bottom:6px;}
+  section.step{padding:56px 0;border-bottom:1px solid var(--divider);scroll-margin-top:24px;}
+  section.step:first-of-type{padding-top:0;}
+  .step-head{display:flex;gap:20px;align-items:flex-start;margin-bottom:24px;}
+  .step-num{font-family:var(--font-display);font-weight:800;font-size:44px;color:var(--red-soft);line-height:1;-webkit-text-stroke:1.5px var(--red);flex-shrink:0;width:64px;}
+  .step-titles{flex:1;min-width:0;}
+  .step h2{font-family:var(--font-display);font-weight:800;font-size:26px;margin:0 0 6px;letter-spacing:-.005em;}
+  .chip-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border:1px solid var(--divider);border-radius:20px;color:var(--ink-2);}
+  .chip.time{color:var(--red-deep);border-color:var(--red-soft);background:var(--red-whisper);}
+  .step-body{max-width:780px;}
+  .step-body p{margin:0 0 16px;color:var(--ink);}
+  .step-body ol, .step-body ul{margin:0 0 18px;padding-left:22px;}
+  .step-body li{margin-bottom:10px;}
+  .step-body strong{color:var(--dark);}
+  .step-body code{font-family:var(--font-mono);font-size:.92em;background:var(--red-soft);color:var(--red-deep);padding:1px 6px;border-radius:3px;}
+  .subhead{font-family:var(--font-display);font-weight:700;font-size:15px;margin:26px 0 10px;color:var(--dark);}
+  .path-card{border:1px solid var(--divider);border-radius:8px;padding:22px 24px;margin:16px 0;}
+  .path-card .path-title{font-family:var(--font-display);font-weight:700;font-size:16px;display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+  .path-card .path-title .tag-rec{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;background:var(--red);color:#fff;padding:3px 8px;border-radius:20px;}
+  .click-path{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-family:var(--font-mono);font-size:13px;margin:14px 0 20px;}
+  .click-path .crumb{background:#fff;border:1px solid var(--divider);padding:6px 12px;border-radius:5px;color:var(--dark);}
+  .click-path .arrow{color:var(--ink-2);}
+  .code-block{background:var(--dark);color:#f1efe9;font-family:var(--font-mono);font-size:13px;line-height:1.65;border-radius:6px;padding:18px 20px;margin:14px 0 22px;position:relative;white-space:pre-wrap;word-break:break-word;}
+  .code-block .copy-btn{position:absolute;top:10px;right:10px;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.08);color:#f1efe9;border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:5px 9px;cursor:pointer;transition:background .15s;}
+  .code-block .copy-btn:hover{background:rgba(255,255,255,.16);}
+  .code-block .copy-btn.copied{background:var(--red);border-color:var(--red);}
+  .prompt-block{background:#fff;border:1px solid var(--divider);border-radius:6px;padding:20px 22px;margin:14px 0 22px;font-family:var(--font-mono);font-size:12.6px;line-height:1.75;position:relative;white-space:pre-wrap;}
+  .prompt-block .copy-btn{position:absolute;top:10px;right:10px;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;background:var(--cream);color:var(--ink-2);border:1px solid var(--divider);border-radius:4px;padding:5px 9px;cursor:pointer;}
+  .prompt-block .copy-btn.copied{background:var(--red);border-color:var(--red);color:#fff;}
+  .prompt-block .field{color:var(--red-deep);font-weight:500;}
+  .checklist{list-style:none;padding:0;margin:14px 0 22px;}
+  .checklist li{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--divider);font-size:14.5px;}
+  .checklist li:first-child{border-top:none;}
+  .checklist .box{flex-shrink:0;width:16px;height:16px;border:1.5px solid var(--ink-2);border-radius:3px;margin-top:2px;}
+  .doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0 22px;}
+  .doc-grid .doc-chip{border:1px solid var(--divider);background:#fff;border-radius:6px;padding:12px 14px;font-size:13px;}
+  .doc-grid .doc-chip .doc-n{font-family:var(--font-mono);font-size:10px;color:var(--red-deep);display:block;margin-bottom:3px;}
+  .ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:16px 0 22px;}
+  .ref-card{border:1px solid var(--divider);border-radius:8px;padding:18px;background:#fff;}
+  .ref-card .ref-name{font-family:var(--font-display);font-weight:700;font-size:15px;margin-bottom:4px;}
+  .ref-card .ref-url{font-family:var(--font-mono);font-size:11.5px;color:var(--red-deep);display:block;margin-bottom:8px;}
+  .ref-card p{font-size:13px;color:var(--ink-2);margin:0;}
+  .timing-table{width:100%;border-collapse:collapse;margin:18px 0 28px;font-size:14px;}
+  .timing-table th{text-align:left;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);padding:10px 12px;border-bottom:2px solid var(--dark);}
+  .timing-table td{padding:12px;border-bottom:1px solid var(--divider);}
+  .timing-table tr.total td{font-family:var(--font-display);font-weight:700;border-bottom:none;border-top:2px solid var(--dark);color:var(--dark);}
+  .timing-table td.mins{font-family:var(--font-mono);color:var(--red-deep);white-space:nowrap;}
+  .notes-section{background:var(--dark);color:#f1efe9;padding:64px 48px 80px 40px;margin-left:-40px;}
+  .notes-section .rail-offset{max-width:780px;margin-left:250px;padding-left:0;}
+  .notes-section .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+  .notes-section h2{font-family:var(--font-display);font-weight:800;font-size:30px;margin:0 0 28px;}
+  .note-item{padding:20px 0;border-top:1px solid rgba(255,255,255,.14);}
+  .note-item:last-child{padding-bottom:0;}
+  .note-item .note-title{font-family:var(--font-display);font-weight:700;font-size:15.5px;color:#fff;margin-bottom:6px;}
+  .note-item p{margin:0;color:rgba(241,239,233,.72);font-size:14.5px;line-height:1.65;}
+  footer{padding:36px 48px 48px 40px;font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);max-width:780px;margin-left:210px;}
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .rail{position:static;height:auto;padding:24px 24px 0;}
+    main{padding:32px 24px 80px;}
+    .notes-section{margin-left:0;padding:48px 24px 64px;}
+    .notes-section .rail-offset{margin-left:0;}
+    footer{margin-left:0;padding:32px 24px 40px;}
+    .masthead{padding:20px 24px;}
+    .hero{padding:40px 24px 40px;}
+  }
+  @media print{
+    .rail{display:none;}
+    .layout{grid-template-columns:1fr;}
+    section.step{break-inside:avoid;}
+    .copy-btn{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="brand">Purely <strong>Personal</strong> · Facilitator Protocol · v2</div>
+  <div class="doc-meta">10X WITH AI, HILVERSUM · BONUS SESSION<br>WEBSITE BUILD DAY, NETLIFY</div>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Live, Follow-Along Session (Revision 4)</div>
+  <h1>Build your business website live, <span class="accent">deployed with zero domain purchase.</span></h1>
+  <p class="lede">A step-by-step protocol for the Hilversum cohort's bonus website-build session, built on top of the Day 1 foundation documents, installed as Claude Code skills through the plugin marketplace, and shipped live on Netlify instead of paid hosting.</p>
+  <div class="hero-stats">
+    <div><div class="num">8</div><div class="label">Steps</div></div>
+    <div><div class="num">&lt;2h</div><div class="label">Total runtime</div></div>
+    <div><div class="num">$0</div><div class="label">Required spend</div></div>
+    <div><div class="num">1</div><div class="label">Live URL, by the end</div></div>
+  </div>
+</div>
+
+<div class="layout">
+  <nav class="rail" id="rail">
+    <div class="rail-title">On this page</div>
+    <a href="#prep" class="n">00</a><span>&nbsp;Before the session</a>
+    <a href="#step1" data-n="1"><span class="n">01</span>&nbsp;Project folder</a>
+    <a href="#step2" data-n="2"><span class="n">02</span>&nbsp;Open in Claude Code</a>
+    <a href="#step3" data-n="3"><span class="n">03</span>&nbsp;Install skills</a>
+    <a href="#step4" data-n="4"><span class="n">04</span>&nbsp;Reference sites</a>
+    <a href="#step5" data-n="5"><span class="n">05</span>&nbsp;Build prompt + follow-ups</a>
+    <a href="#step6" data-n="6"><span class="n">06</span>&nbsp;First preview</a>
+    <a href="#step7" data-n="7"><span class="n">07</span>&nbsp;Refinement round</a>
+    <a href="#step8" data-n="8"><span class="n">08</span>&nbsp;Deploy live</a>
+    <a href="#timing"><span class="n">·</span>&nbsp;Timing summary</a>
+    <a href="#notes"><span class="n">·</span>&nbsp;Facilitator notes</a>
+    <div class="rail-note">Print this page for a paper copy at the podium, the layout collapses cleanly.</div>
+  </nav>
+
+  <main>
+
+    <section class="step" id="prep">
+      <div class="step-head">
+        <div class="step-num">00</div>
+        <div class="step-titles">
+          <h2>Before the session</h2>
+          <div class="chip-row"><span class="chip">Carried over from Day 1</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Nothing new to produce here. If Day 1 (Business Authority Foundation) was completed, everyone already has what this session needs.</p>
+
+        <div class="subhead">The five foundation documents</div>
+        <div class="doc-grid">
+          <div class="doc-chip"><span class="doc-n">01</span>Business Plan</div>
+          <div class="doc-chip"><span class="doc-n">02</span>ICP Document</div>
+          <div class="doc-chip"><span class="doc-n">03</span>Messaging House</div>
+          <div class="doc-chip"><span class="doc-n">04</span>Brand Positioning</div>
+          <div class="doc-chip"><span class="doc-n">05</span>Business Inbox</div>
+        </div>
+
+        <div class="subhead">Plus, if they already run a business</div>
+        <ul class="checklist">
+          <li><span class="box"></span><div>Logo file</div></li>
+          <li><span class="box"></span><div>A handful of existing photos</div></li>
+          <li><span class="box"></span><div>Brand colors, hex codes if they have them, or just described in plain language</div></li>
+        </ul>
+
+        <div class="callout-block">
+          <span class="tag">If any of this is missing</span>
+          Don't send anyone back to redo Day 1 live. Missing brand colors or a logo isn't a blocker, Step 5's prompt has Claude propose them. Missing the foundation documents entirely is the one true blocker; have that person pull them up before Step 1.
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step1">
+      <div class="step-head">
+        <div class="step-num">01</div>
+        <div class="step-titles">
+          <h2>Create the project folder</h2>
+          <div class="chip-row"><span class="chip time">5 min</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <ol>
+          <li>On the desktop, create one new folder named for <strong>both</strong> their business and their personal brand, e.g. <code>summit-ridge-malik-website</code>. This keeps the folder identifiable if they're managing more than one project later.</li>
+          <li>Drop every foundation document from Step 00 straight into this folder, all five files, no sub-folders needed.</li>
+          <li>Add their logo file and any existing photos into the same folder, or a <code>media</code> sub-folder if they'd rather keep it tidy. Either works, Claude will find both.</li>
+        </ol>
+        <div class="callout-block">
+          <span class="tag">Confirm before moving on</span>
+          Every participant's folder should contain the five foundation docs plus whatever images they have, before anyone opens Claude Code. This is the one step worth a visible round of confirmation in chat.
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step2">
+      <div class="step-head">
+        <div class="step-num">02</div>
+        <div class="step-titles">
+          <h2>Open the folder in Claude Code</h2>
+          <div class="chip-row"><span class="chip time">3 min</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <ol>
+          <li>Open Claude Desktop → click the <strong>Code</strong> tab (next to Chat and Cowork) → <strong>New Session</strong>.</li>
+          <li>Click <strong>Open Folder</strong>, select the folder built in Step 01, and click <strong>Trust Workspace</strong> when prompted.</li>
+        </ol>
+        <p>Everyone's folder tab at the top should now show their business + personal brand folder name. Don't advance until every screen shows this.</p>
+      </div>
+    </section>
+
+    <section class="step" id="step3">
+      <div class="step-head">
+        <div class="step-num">03</div>
+        <div class="step-titles">
+          <h2>Install the two design skills</h2>
+          <div class="chip-row"><span class="chip time">12 min</span><span class="chip">One-time only</span><span class="chip">Verified against Anthropic docs</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>These two skills are the difference between a site that looks like everyone else's AI output and one that doesn't, say this out loud, it's why the room shouldn't skip it. Installed once, both are available automatically in every future project, no reinstalling per session.</p>
+        <p>The exact click path below is the confirmed one from Anthropic's own plugin documentation, not a guess, so it should match what's on screen exactly. Walk through it slowly the first time; it moves fast on the second skill.</p>
+
+        <div class="subhead">Part A: Add the marketplace (once, then reused for both skills)</div>
+        <div class="click-path">
+          <span class="crumb">Left sidebar</span><span class="arrow">→</span>
+          <span class="crumb">Customize</span><span class="arrow">→</span>
+          <span class="crumb">Plugins tab</span><span class="arrow">→</span>
+          <span class="crumb">"+" button</span><span class="arrow">→</span>
+          <span class="crumb">Add marketplace</span>
+        </div>
+        <ol>
+          <li>Click <strong>Customize</strong> in the left sidebar. This is the single home for plugins, skills, and connectors, everything for this step lives here.</li>
+          <li>Open the <strong>Plugins</strong> tab.</li>
+          <li>In the <strong>Personal plugins</strong> section, click the <strong>"+"</strong> button.</li>
+          <li>Select <strong>Add marketplace</strong>.</li>
+          <li>Choose <strong>Add from a repository</strong>, this is the option that accepts a GitHub URL directly, rather than picking from Anthropic's pre-built list.</li>
+        </ol>
+
+        <div class="subhead">Part B: Sync Skill 1, Frontend Design (Anthropic)</div>
+        <p>Expands font and layout choices beyond generic defaults. Paste this repo URL into the field from the step above:</p>
+        <div class="code-block"><button class="copy-btn" onclick="copyBlock(this)">Copy</button>https://github.com/anthropics/skills/tree/main/skills/frontend-design</div>
+        <ol>
+          <li>Paste the URL and let it sync, this registers the marketplace but doesn't install anything yet.</li>
+          <li>Back in the Plugins tab, click <strong>Browse plugins</strong> to see what the marketplace makes available.</li>
+          <li>Find <strong>Frontend Design</strong> in the list and click <strong>Install</strong>.</li>
+        </ol>
+
+        <div class="subhead">Part C: Sync Skill 2, UI/UX Pro Max</div>
+        <p>A library of color palettes, font pairings, and layout patterns to pull from. Same five-click path from Part A, new URL:</p>
+        <div class="code-block"><button class="copy-btn" onclick="copyBlock(this)">Copy</button>https://github.com/nextlevelbuilder/ui-ux-pro-max-skill</div>
+        <ol>
+          <li>Repeat Part A's path: <strong>"+"</strong> → <strong>Add marketplace</strong> → <strong>Add from a repository</strong>.</li>
+          <li>Paste this second URL and let it sync.</li>
+          <li><strong>Browse plugins</strong>, find <strong>UI/UX Pro Max</strong>, click <strong>Install</strong>.</li>
+        </ol>
+
+        <div class="subhead">Part D: Confirm both are live</div>
+        <p>Type <code>/</code> in the chat box, or click the <strong>"+"</strong> next to the message field. Both skills should appear in the list that pops up. That's the real confirmation, not the install button itself, an install can silently fail to register.</p>
+
+        <div class="callout-block">
+          <span class="tag">Confirm before Step 5</span>
+          Have everyone type <code>/</code> and read out loud what shows up. A missed install is invisible until the finished site looks generic, and by then it's a rebuild, not a quick fix. Don't move the room forward until every screen shows both skills.
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step4">
+      <div class="step-head">
+        <div class="step-num">04</div>
+        <div class="step-titles">
+          <h2>Reference sites for direction</h2>
+          <div class="chip-row"><span class="chip time">10 min</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Nobody should type a blind "build me a website" prompt. Give Claude a real target to work from instead of guessing, have each participant pick one site whose layout and feel they want to borrow from, then screenshot the full page and save it into their project folder.</p>
+
+        <div class="ref-grid">
+          <div class="ref-card">
+            <div class="ref-name">Awwwards</div>
+            <span class="ref-url">awwwards.com</span>
+            <p>Award-winning sites, fully clickable live, best for hero treatment and motion ideas.</p>
+          </div>
+          <div class="ref-card">
+            <div class="ref-name">Dribbble</div>
+            <span class="ref-url">dribbble.com</span>
+            <p>Searchable by industry keyword, fastest way to find a close niche match.</p>
+          </div>
+          <div class="ref-card">
+            <div class="ref-name">Land-book</div>
+            <span class="ref-url">land-book.com</span>
+            <p>Curated landing pages only, good fit for a single-page business site like this build.</p>
+          </div>
+          <div class="ref-card">
+            <div class="ref-name">Lapa Ninja</div>
+            <span class="ref-url">lapa.ninja</span>
+            <p>Filterable by category and style, useful backup if the first two don't land.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="step5">
+      <div class="step-head">
+        <div class="step-num">05</div>
+        <div class="step-titles">
+          <h2>The build prompt, and the follow-ups</h2>
+          <div class="chip-row"><span class="chip time">25–35 min</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>This is the step that pulls everything together, reference screenshot, logo and photos, both installed skills, and all five foundation documents. Read it aloud line by line; participants adapt the specifics as they type. It's meant to be extensive, a short prompt is exactly how generic sites happen. One long, specific prompt beats five short vague ones, because Claude only gets the full picture once, right at the start.</p>
+
+        <div class="subhead">Setup, before typing anything</div>
+        <ol>
+          <li>Paste the reference screenshot from Step 04 into the Code chat.</li>
+          <li>Type <code>/</code> and select <strong>Frontend Design</strong>, so the layout and typography guidance is active.</li>
+          <li>Type <code>/</code> again and select <strong>UI/UX Pro Max</strong>, so the palette and pattern library is active alongside it.</li>
+          <li>With both skills selected, type or voice-to-text the prompt below, filling in the highlighted fields.</li>
+        </ol>
+
+        <div class="subhead">Prompt 1: The initial build</div>
+        <div class="prompt-block"><button class="copy-btn" onclick="copyBlock(this)">Copy</button>Please build me a complete business website for <span class="field">[BUSINESS NAME]</span>,
+based here in <span class="field">[CITY, STATE]</span>.
+
+Use the Frontend Design skill and the UI/UX Pro Max skill together
+for this build, layout, typography, and color decisions should come
+from those skills, not from generic defaults.
+
+Use the reference image I've shared as layout and feel inspiration,
+but build it entirely around my own brand, my logo, my brand colors,
+and the photos already in this folder.
+
+I've included my full foundation in this project folder. Read all
+five documents before writing a single line of copy:
+  - Business Plan
+  - ICP document
+  - Messaging House
+  - Brand Positioning
+  - Business Inbox
+
+Pull my actual positioning, my real offer, and my ICP's language
+directly from those documents, don't invent generic copy or
+paraphrase them into something vaguer. Every headline, subhead, and
+call-to-action should trace back to a specific line in one of those
+five documents. The site should read like it was written by someone
+who has actually read my business plan, not like a template with my
+name dropped in.
+
+Sections I want included: <span class="field">[list anything specific, before/after
+work, a process breakdown, testimonials, service list]</span>
+
+Build this as a single HTML file so it's simple to deploy.
+
+Before you write anything, tell me which specific lines from my
+foundation documents you're planning to use for the headline and the
+About section, so I can confirm before you build the rest.
+
+Please ask me any other questions you need before you start.</div>
+
+        <p>If Claude comes back with questions before it builds, have participants answer straight from the Messaging House and Business Inbox documents rather than typing anything new from memory.</p>
+
+        <div class="callout-block">
+          <span class="tag">Before submitting</span>
+          Set the mode to <strong>Auto</strong> at the bottom of the chat so the build runs through without stopping for permission on every file. Walk the room to confirm everyone has this toggled first.
+        </div>
+
+        <p>Let it run, a first full draft typically takes 5–10 minutes.</p>
+
+        <div class="subhead">Prompt 2: Strip the AI glow</div>
+        <p>Run this immediately after the first draft, before anyone reacts to the design. First-pass copy from any model tends to carry a generic sheen, safe adjectives, rounded-off claims, sentences that could belong to any business in the category. This prompt sends it back through with the actual source material.</p>
+        <div class="prompt-block"><button class="copy-btn" onclick="copyBlock(this)">Copy</button>Read through every section of copy on this site and flag anything
+that sounds like generic AI-written text, vague claims, safe
+adjectives, sentences that could apply to any business in this
+industry, phrasing that doesn't sound like a real person talking
+about their own business.
+
+For each flagged section, rewrite it using the actual language from
+my Messaging House and Business Positioning documents. If a claim
+in the copy isn't directly supported by something in my Business
+Plan or Business Inbox, either cut it or replace it with something
+that is.
+
+Keep sentences short and specific. Say what the business actually
+does, for the actual clients described in my ICP document, using
+their language, not marketing-speak.</div>
+
+        <div class="subhead">Prompt 3: A second design pass</div>
+        <p>Naming both skills again here matters, Claude sometimes leans on one and forgets the other by the third or fourth prompt in a session.</p>
+        <div class="prompt-block"><button class="copy-btn" onclick="copyBlock(this)">Copy</button>Using the Frontend Design skill, take one more pass on the layout,
+spacing, and typography, look specifically for anything that reads
+as a default AI-generated template rather than a deliberate choice
+for this business.
+
+Using the UI/UX Pro Max skill, check the current color and font
+pairing against the library, if there's a stronger, more specific
+pairing for a <span class="field">[BUSINESS INDUSTRY]</span> business, apply it.
+
+Keep my logo and existing photos as the anchor, don't replace them,
+just make sure everything around them now looks intentional rather
+than templated.</div>
+
+        <div class="subhead">Prompt 4: Foundation cross-check</div>
+        <p>The closing accuracy pass, run this once the design and copy both feel right, right before Step 06.</p>
+        <div class="prompt-block"><button class="copy-btn" onclick="copyBlock(this)">Copy</button>Go through the site one more time, section by section, and check
+every claim, offer, and detail against my five foundation documents,
+Business Plan, ICP, Messaging House, Brand Positioning, and Business
+Inbox. Flag anything on the site that doesn't match what's actually
+in those documents, and tell me what you found before changing
+anything.</div>
+      </div>
+    </section>
+
+    <section class="step" id="step6">
+      <div class="step-head">
+        <div class="step-num">06</div>
+        <div class="step-titles">
+          <h2>First look, live preview</h2>
+          <div class="chip-row"><span class="chip time">5 min</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <ol>
+          <li>Click <strong>Preview</strong> in the top-right corner once the build finishes.</li>
+          <li>Have everyone scroll their own site top to bottom once, out loud on the call, one thing they like, one thing they'd change.</li>
+        </ol>
+        <p>This surfaces the common fixes before individual editing time, and normalizes a rough first draft instead of letting people read it as a personal miss.</p>
+      </div>
+    </section>
+
+    <section class="step" id="step7">
+      <div class="step-head">
+        <div class="step-num">07</div>
+        <div class="step-titles">
+          <h2>Guided refinement round</h2>
+          <div class="chip-row"><span class="chip time">20–30 min</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>Give the room a short, specific punch list rather than open-ended "fix whatever you want" time, open-ended time is where non-technical participants freeze.</p>
+
+        <ul>
+          <li><strong>Fix the hero fold:</strong> <em>"The hero section is getting cut off, make sure all elements fit above the fold."</em></li>
+          <li><strong>Simplify a busy section:</strong> use the <strong>Select</strong> tool (top-right of preview), click the section, and type a plain fix, <em>"simplify this to one full-width image instead of three cropped ones."</em></li>
+          <li><strong>Mark up visually:</strong> use the <strong>pencil/draw</strong> tool to circle the exact spot that's wrong, add a note, and send. Fastest fix path for anyone who struggles to describe a layout problem in words.</li>
+          <li><strong>Cross-check against the Messaging House:</strong> is the headline actually the core message they defined on Day 1, or did Claude paraphrase it into something generic? Worth one direct pass.</li>
+        </ul>
+        <p>Before moving on, confirm every real business detail is correct: phone number, service list, hours, contact method. Easy to leave as placeholder text if nobody checks.</p>
+        <p>Facilitator should float and unstick anyone whose prompt isn't landing, rather than letting them keep retrying the same phrasing alone.</p>
+      </div>
+    </section>
+
+    <section class="step" id="step8">
+      <div class="step-head">
+        <div class="step-num">08</div>
+        <div class="step-titles">
+          <h2>Deploy live on Netlify</h2>
+          <div class="chip-row"><span class="chip time">15–20 min</span><span class="chip">No domain purchase required</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <p>No hosting plan to buy, no checkout flow. This gets a real, shareable HTTPS link in minutes, on a free subdomain. A custom domain can be connected later if someone wants one.</p>
+
+        <div class="path-card">
+          <div class="path-title">Netlify Drop</div>
+          <ol>
+            <li>Go to <strong>app.netlify.com/drop</strong> in a browser.</li>
+            <li>Drag the entire project folder straight into the browser window.</li>
+            <li>Netlify deploys instantly and returns a live URL, something like <code>https://random-name-123.netlify.app</code>.</li>
+            <li><em>Optional:</em> create a free Netlify account to keep the site permanently and rename the subdomain under Site Settings → Change Site Name.</li>
+            <li><em>Optional:</em> connect a custom domain later under Domain Settings, if they buy one through Netlify or point one they already own.</li>
+          </ol>
+          <p>This is the path to run live in the room, zero setup, no sign-in required to get the first URL.</p>
+        </div>
+
+        <div class="callout-block">
+          <span class="tag">Close the loop</span>
+          Have everyone drop their live URL into the group chat once it's up. That's the session's finish line, and a quick roll call of who made it all the way through.
+        </div>
+      </div>
+    </section>
+
+    <section class="step" id="timing" style="border-bottom:none;">
+      <div class="step-head">
+        <div class="step-num">·</div>
+        <div class="step-titles">
+          <h2>Timing summary</h2>
+          <div class="chip-row"><span class="chip">Target: under 2 hours</span></div>
+        </div>
+      </div>
+      <div class="step-body">
+        <table class="timing-table">
+          <thead><tr><th>Step</th><th>Time</th></tr></thead>
+          <tbody>
+            <tr><td>01 · Create project folder</td><td class="mins">5 min</td></tr>
+            <tr><td>02 · Open in Claude Code</td><td class="mins">3 min</td></tr>
+            <tr><td>03 · Install skills (one-time)</td><td class="mins">12 min</td></tr>
+            <tr><td>04 · Reference sites</td><td class="mins">10 min</td></tr>
+            <tr><td>05 · Build prompt + follow-ups</td><td class="mins">25–35 min</td></tr>
+            <tr><td>06 · First preview</td><td class="mins">5 min</td></tr>
+            <tr><td>07 · Guided refinement</td><td class="mins">20–30 min</td></tr>
+            <tr><td>08 · Deploy live</td><td class="mins">15–20 min</td></tr>
+            <tr class="total"><td>Total</td><td class="mins">95–120 min</td></tr>
+          </tbody>
+        </table>
+        <p>The follow-up prompts in Step 05 push the high end close to the two-hour ceiling, if the room is running long, Prompt 4 (foundation cross-check) is the one to cut, the AI-glow and design-pass prompts matter more for the finished quality. Step 03's marketplace flow and Step 08's first-time Netlify Drop are the other two spots sessions typically lose a few extra minutes.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="notes-section" id="notes">
+  <div class="rail-offset">
+    <div class="eyebrow">Comprehensive Facilitator Notes</div>
+    <h2>Running the room</h2>
+
+    <div class="note-item">
+      <div class="note-title">The five foundation documents are the content source, not background reading</div>
+      <p>Everything in Step 05's prompt depends on Claude actually reading the Business Plan, ICP, Messaging House, Brand Positioning, and Business Inbox, not on the facilitator summarizing them. If a participant only has two or three of the five, flag it before Step 05; a partial foundation produces a partial, more generic result.</p>
+    </div>
+
+    <div class="note-item">
+      <div class="note-title">Verify both skills before Step 05, for everyone</div>
+      <p>A missed marketplace install is invisible until the finished site looks templated, and by then it's a rebuild rather than a quick fix. Do a visible check-in right after Step 03, have each participant type <code>/</code> and read out loud what shows up, rather than trusting the install button alone.</p>
+    </div>
+
+    <div class="note-item">
+      <div class="note-title">The four prompts in Step 05 do different jobs, don't collapse them</div>
+      <p>Prompt 1 builds the site from the foundation documents. Prompt 2 strips out the generic AI tone that first drafts tend to carry, even when the underlying facts are right. Prompt 3 goes back to the two skills by name for a second design pass, since Claude will sometimes lean on one skill and quietly drop the other by the third or fourth exchange. Prompt 4 is the accuracy audit against all five documents. Running them in order, rather than folding the fixes into one long ad-hoc request, is what keeps the output specific instead of averaging back toward generic.</p>
+    </div>
+
+    <div class="note-item">
+      <div class="note-title">Keep the asset bar low</div>
+      <p>The strongest sessions run on a logo and whatever photos already exist, nothing produced specifically for this. If someone has no assets at all, let Claude propose a palette and placeholder treatment in Step 05 rather than sending them off to source images mid-session.</p>
+    </div>
+
+    <div class="note-item">
+      <div class="note-title">Normalize the rough first draft</div>
+      <p>Step 06's "one like, one change" round matters more than it looks. Non-technical participants often read a rough first pass as a personal failure rather than the normal starting point. Hearing peers hit the same rough edges keeps the room's energy up going into refinement.</p>
+    </div>
+
+    <div class="note-item">
+      <div class="note-title">Open-ended editing time stalls the room</div>
+      <p>Give the punch list in Step 07 rather than "fix whatever you want." Participants who don't know what to ask for tend to freeze, then quietly disengage. A facilitator walking the room to unstick specific prompts keeps momentum better than open group Q&amp;A.</p>
+    </div>
+
+    <div class="note-item">
+      <div class="note-title">Netlify Drop is the whole deployment step</div>
+      <p>It needs no account, no terminal, and no domain purchase, just drag the folder in and get a URL back. This is what keeps the last part of the session fast for a fully non-technical room.</p>
+    </div>
+
+    <div class="note-item">
+      <div class="note-title">Close on the shared URL, not on hosting logistics</div>
+      <p>The free subdomain is the finish line for this session, a custom domain is a follow-up task, not a requirement to leave with something real and live. Having everyone post their URL in the group chat gives a visible finish and a quick roll call of who made it through deploy.</p>
+    </div>
+  </div>
+</div>
+
+<footer>10X WITH AI, HILVERSUM · BONUS SESSION · WEBSITE BUILD DAY, Purely Personal Facilitator Protocol · Rev 4 (Netlify, verified UI flow)</footer>
+
+<script>
+  function copyBlock(btn){
+    const block = btn.closest('.code-block, .prompt-block') || btn.previousElementSibling;
+    const clone = block.cloneNode(true);
+    const innerBtn = clone.querySelector('.copy-btn');
+    if(innerBtn) innerBtn.remove();
+    const text = clone.innerText.trim();
+    navigator.clipboard.writeText(text).then(()=>{
+      btn.textContent = 'Copied';
+      btn.classList.add('copied');
+      setTimeout(()=>{ btn.textContent='Copy'; btn.classList.remove('copied'); }, 1600);
+    });
+  }
+
+  const links = document.querySelectorAll('.rail a[data-n]');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  function onScroll(){
+    let idx = 0;
+    const scrollPos = window.scrollY + 120;
+    sections.forEach((sec, i) => { if(sec && sec.offsetTop <= scrollPos) idx = i; });
+    links.forEach(l => l.classList.remove('active'));
+    if(links[idx]) links[idx].classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+</script>
+
+</body>
+</html>
